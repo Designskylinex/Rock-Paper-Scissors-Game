@@ -1,6 +1,10 @@
 # Rock-Paper-Scissors-Game
 Rock paper scissors game written in javascript
 
+IMPORTANT
+Use the console in developers tools to access the game. No GUI for the time being!
+IMPORTANT
+
 
 Utilizing the skills learned in the odin project I created a rock paper scissors
 game using javascript language.
