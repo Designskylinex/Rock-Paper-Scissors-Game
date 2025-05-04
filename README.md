@@ -7,6 +7,7 @@ game using javascript language.
 
 
 Pseudocode 
+
 User gets a choice of rock, paper, or scissors
 Computer’s choice is randomized
 If user and computer choose the same choice its a tie
