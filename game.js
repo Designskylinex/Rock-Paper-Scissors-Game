@@ -30,7 +30,7 @@ let humanScore = 0
 let computerScore = 0
 
 
-// Function for determination of who wins
+// Function for determination of who wins a round
 function playRound(humanChoice, computerChoice) {
     console.log(`You chose: ${humanChoice}`);
     console.log(`Computer chose: ${computerChoice}`);
@@ -51,8 +51,9 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+// Gameplay function that shows score and compares score to see who won
 function playGame() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
