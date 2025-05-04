@@ -13,13 +13,13 @@ function randomChoice(min, max) {
 
 
 // Function for computer with the choice
-function getComputerChoice(choice) {
+function getComputerChoice() {
     const num = randomChoice(1, 3)
-    if (choice == 3) {
+    if (num == 3) {
         return "Scissors";
-    } else if (choice == 2) {
+    } else if (num == 2) {
         return "Paper";
-    } else if (choice == 1) {
+    } else if (num == 1) {
         return "Rock";
     }
 }
@@ -52,6 +52,6 @@ function playRound(humanChoice, computerChoice) {
 }
 
 // Initiates a round
-const humanChoice = getHumanChoice()
+const humanChoice = getHumanChoice();
 const computerChoice = getComputerChoice();
 playRound(humanChoice, computerChoice);
