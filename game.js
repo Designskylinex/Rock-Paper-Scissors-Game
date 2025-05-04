@@ -30,7 +30,7 @@ let humanScore = 0
 let computerScore = 0
 
 
-
+// Function for determination of who wins
 function playRound(humanChoice, computerChoice) {
     console.log(`You chose: ${humanChoice}`);
     console.log(`Computer chose: ${computerChoice}`);
@@ -43,15 +43,34 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "Rock" && computerChoice === "Paper") ||
         (humanChoice === "Scissors" && computerChoice === "Rock")
     ) {
-        console.log("Computer wins!");
+        console.log("Computer won this round!");
         computerScore += 1
     } else {
-        console.log("You win!");
+        console.log("You won this round!");
         humanScore += 1
     }
 }
 
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+        console.log(`Your score ${humanScore}`)
+        console.log(`Computer score ${computerScore}`)
+    }
+
+    if (humanScore > computerScore) {
+        console.log("The winner is YOU!")
+    } else if (computerScore > humanScore) {
+        console.log("The Computer Won!")
+    } else if (humanScore === computerScore) {
+        console.log("The game is a tie, thanks for playing")
+    }
+}
+
+
+
+
 // Initiates a round
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
-playRound(humanChoice, computerChoice);
+playGame();
