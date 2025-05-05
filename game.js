@@ -1,10 +1,33 @@
-console.log("Welcome to rock paper scissors")
+// Button selectors
+const choiceButtons = document.querySelectorAll('.choice-btn');
+const humanSpan = document.getElementById('human-choice');
+const computerChoiceSpan = document.getElementById('computer-choice');
+const roundResultH2 = document.getElementById('round-result');
+const humanScoreSpan = document.getElementById('human-score');
+const computerScoreSpan = document.getElementById('computer-score');
 
-// Takes user input to determine if they chose a correct answer
-function getHumanChoice() {
-    let userChoice = prompt("Rock Paper or Scissors?");
-    return userChoice;
-}
+
+// Score variables for human and computer
+let humanScore = 0
+let computerScore = 0
+
+
+choiceButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const human = btn.id;
+        const computerChoice = getComputerChoice();
+        const resultMessage = decideWinner(human, computerChoice);
+
+        //Updating the GUI
+        humanSpan.textContent = human;
+        computerChoiceSpan.textContent = computerChoice;
+        roundResultH2.textContent = resultMessage;
+        humanScoreSpan.textContent = humanScore;
+        computerScoreSpan.textContent = computerScore;
+    });
+});
+
+
 
 // Function that chooses a random number for the computer
 function randomChoice(min, max) {
@@ -25,53 +48,40 @@ function getComputerChoice() {
 }
 
 
-// Score variables for human and computer
-let humanScore = 0
-let computerScore = 0
-
-
 // Function for determination of who wins a round
-function playRound(humanChoice, computerChoice) {
-    console.log(`You chose: ${humanChoice}`);
-    console.log(`Computer chose: ${computerChoice}`);
+function decideWinner(human, computer) {
+    if (human === computer) {
+        return "It's a tie!";
+    } 
+        const humanWins = 
+        (human === "Rock" && computer === "Scissors") ||
+        (human === "Paper" && computer === "Rock") ||
+        (human === "Scissors" && computer === "Paper");
 
-
-    if (humanChoice === computerChoice) {
-        console.log("It's a tie!")
-    } else if (
-        (humanChoice === "Paper" && computerChoice === "Scissors") ||
-        (humanChoice === "Rock" && computerChoice === "Paper") ||
-        (humanChoice === "Scissors" && computerChoice === "Rock")
-    ) {
-        console.log("Computer won this round!");
-        computerScore += 1
-    } else {
-        console.log("You won this round!");
-        humanScore += 1
+        if (humanWins) {
+        humanScore++;
+        return "You win this round!";
+        } else {
+        computerScore++;
+        return "Computer wins this round!";
     }
 }
 
 // Gameplay function that shows score and compares score to see who won
-function playGame() {
-    for (let i = 0; i < 6; i++) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        console.log(`Your score ${humanScore}`)
-        console.log(`Computer score ${computerScore}`)
-    }
+// function playGame() {
+//     if (humanScore > computerScore) {
+//         console.log("The winner is YOU!")
+//     } else if (computerScore > humanScore) {
+//         console.log("The Computer Won!")
+//     } else if (humanScore === computerScore) {
+//         console.log("The game is a tie, thanks for playing")
+//     }
+// }
 
-    if (humanScore > computerScore) {
-        console.log("The winner is YOU!")
-    } else if (computerScore > humanScore) {
-        console.log("The Computer Won!")
-    } else if (humanScore === computerScore) {
-        console.log("The game is a tie, thanks for playing")
-    }
-}
+
 
 
 
 
 // Initiates a round
-playGame();
+//playGame();
